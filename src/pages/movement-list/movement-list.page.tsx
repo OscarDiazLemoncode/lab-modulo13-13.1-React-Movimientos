@@ -1,8 +1,7 @@
 import React from 'react';
 import { AppLayout } from '@/layouts';
-import { MovementListItemComponent } from './components/movement-list-item.component';
 import classes from './movement-list.page.module.css';
-import { AccountListTableComponent } from './components/movement-list-table.component';
+import { MovementListTableComponent } from './components/movement-list-table.component';
 
 export const MovementListPage: React.FC = () => {
   return (
@@ -15,7 +14,7 @@ export const MovementListPage: React.FC = () => {
             <p>1400</p>
           </div>
         </div>
-        <AccountListTableComponent />
+        <MovementListTableComponent />
       </div>
     </AppLayout>
   );

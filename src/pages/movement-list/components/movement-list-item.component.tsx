@@ -1,5 +1,6 @@
 import React from 'react';
 import { MovementVM } from '../api/movement-list.api.model';
+import classes from './movement-list-item.component.module.css';
 
 const movementsDataMock: MovementVM[] = [
   {
@@ -27,13 +28,17 @@ export const MovementListItemComponent: React.FC = () => {
   return (
     <>
       {movements.map((movement) => (
-        <>
-          <p key={movement.id}>{movement.transaction}</p>
-          <p key={movement.id}>{movement.realTransaction}</p>
-          <p key={movement.id}>{movement.description}</p>
-          <p key={movement.id}>{movement.amount}</p>
-          <p key={movement.id}>{movement.balance}</p>
-        </>
+        <tr className={classes.row}>
+          <td key={movement.id}>{movement.transaction}</td>
+          <td key={movement.id}>{movement.realTransaction}</td>
+          <td key={movement.id}>{movement.description}</td>
+          <td key={movement.id} className={classes.alignRight}>
+            {movement.amount}
+          </td>
+          <td key={movement.id} className={classes.alignRight}>
+            {movement.balance}
+          </td>
+        </tr>
       ))}
     </>
   );
