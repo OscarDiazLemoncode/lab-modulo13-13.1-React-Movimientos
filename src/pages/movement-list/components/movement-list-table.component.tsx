@@ -1,7 +1,13 @@
 import { MovementListItemComponent } from './movement-list-item.component';
+import { MovementVM } from '../api/movement-list.api.model';
 import classes from './movement-list-table.component.module.css';
 
-export const MovementListTableComponent = () => {
+interface Props {
+  movementList: MovementVM[];
+}
+
+export const MovementListTableComponent: React.FC<Props> = (props) => {
+  const { movementList } = props;
   return (
     <>
       <div className={classes.headerContainer}>
@@ -31,7 +37,9 @@ export const MovementListTableComponent = () => {
           </tr>
         </thead>
         <tbody>
-          <MovementListItemComponent />
+          {movementList.map((movement) => (
+            <MovementListItemComponent movement={movement} key={movement.id} />
+          ))}
         </tbody>
       </table>
     </>

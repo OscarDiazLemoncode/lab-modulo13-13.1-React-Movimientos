@@ -1,9 +1,16 @@
 import React from 'react';
 import { AppLayout } from '@/layouts';
-import classes from './movement-list.page.module.css';
 import { MovementListTableComponent } from './components/movement-list-table.component';
+import { getMovementsList } from './api/movement-list.api';
+import { MovementVM } from './api/movement-list.api.model';
+import classes from './movement-list.page.module.css';
 
 export const MovementListPage: React.FC = () => {
+  const [movementList, setMovementList] = React.useState<MovementVM[]>([]);
+  React.useEffect(() => {
+    getMovementsList('3').then((data) => setMovementList(data));
+  }, []);
+
   return (
     <AppLayout>
       <div className={classes.root}>
@@ -14,7 +21,7 @@ export const MovementListPage: React.FC = () => {
             <p>1400</p>
           </div>
         </div>
-        <MovementListTableComponent />
+        <MovementListTableComponent movementList={movementList} />
       </div>
     </AppLayout>
   );
