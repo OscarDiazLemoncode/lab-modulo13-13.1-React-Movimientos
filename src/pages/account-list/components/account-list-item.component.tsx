@@ -1,12 +1,12 @@
-import React from "react";
-import { AccountVm } from "../account-list.vm";
-import classes from "./account-list-item.component.module.css";
-import { Link, generatePath, useNavigate } from "react-router-dom";
-import { appRoutes } from "@/core/router";
+import React from 'react';
+import { AccountVm } from '../account-list.vm';
+import classes from './account-list-item.component.module.css';
+import { Link, generatePath, useNavigate } from 'react-router-dom';
+import { appRoutes } from '@/core/router';
 
-const ACTION_NONE = "";
-const ACTION_TRANSFER = "1";
-const ACTION_MOVEMENTS = "2";
+const ACTION_NONE = '';
+const ACTION_TRANSFER = '1';
+const ACTION_MOVEMENTS = '2';
 
 interface Props {
   accountItem: AccountVm;

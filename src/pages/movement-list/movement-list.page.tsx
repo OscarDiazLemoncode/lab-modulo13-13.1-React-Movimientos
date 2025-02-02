@@ -3,15 +3,18 @@ import { useParams } from 'react-router-dom';
 import { AppLayout } from '@/layouts';
 import { MovementListTableComponent } from './components/movement-list-table.component';
 import { getMovementsList } from './api/movement-list.api';
-import { MovementVM } from './api/movement-list.api.model';
+import { MovementViewM } from './movement-list.vm';
+import { mapMovementListApiToVM } from './movement-list.mapper';
 import classes from './movement-list.page.module.css';
 
 export const MovementListPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [movementList, setMovementList] = React.useState<MovementVM[]>([]);
+  const [movementList, setMovementList] = React.useState<MovementViewM[]>([]);
   React.useEffect(() => {
     if (id) {
-      getMovementsList(id).then((data) => setMovementList(data));
+      getMovementsList(id).then((data) =>
+        setMovementList(mapMovementListApiToVM(data))
+      );
     }
   }, [id]);
 

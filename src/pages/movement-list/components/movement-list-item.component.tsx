@@ -1,9 +1,9 @@
 import React from 'react';
-import { MovementVM } from '../api/movement-list.api.model';
+import { MovementViewM } from '../movement-list.vm';
 import classes from './movement-list-item.component.module.css';
 
 interface Props {
-  movement: MovementVM;
+  movement: MovementViewM;
 }
 
 export const MovementListItemComponent: React.FC<Props> = (props) => {
@@ -13,8 +13,8 @@ export const MovementListItemComponent: React.FC<Props> = (props) => {
     <>
       {
         <tr className={classes.row}>
-          <td>{movement.transaction}</td>
-          <td>{movement.realTransaction}</td>
+          <td>{movement.transaction.toLocaleDateString()}</td>
+          <td>{movement.realTransaction.toLocaleDateString()}</td>
           <td>{movement.description}</td>
           <td className={classes.alignRight}>{movement.amount}</td>
           <td className={classes.alignRight}>{movement.balance}</td>
