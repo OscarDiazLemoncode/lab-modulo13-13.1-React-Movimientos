@@ -36,3 +36,6 @@
 .uppercase {
   text-transform: uppercase;
 }
+.negative {
+  color: #db0000;
+}

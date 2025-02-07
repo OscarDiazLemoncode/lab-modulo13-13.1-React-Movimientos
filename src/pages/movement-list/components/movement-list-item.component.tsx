@@ -16,8 +16,12 @@ export const MovementListItemComponent: React.FC<Props> = (props) => {
           <td>{movement.transaction.toLocaleDateString()}</td>
           <td>{movement.realTransaction.toLocaleDateString()}</td>
           <td>{movement.description}</td>
-          <td className={classes.alignRight}>{movement.amount}</td>
-          <td className={classes.alignRight}>{movement.balance}</td>
+          <td
+            className={`${classes.alignRight} ${
+              movement.amount < 0 ? classes.negative : null
+            }`}
+          >{`${movement.amount} €`}</td>
+          <td className={classes.alignRight}>{`${movement.balance} €`}</td>
         </tr>
       }
     </>

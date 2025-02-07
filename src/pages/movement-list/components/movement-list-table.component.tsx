@@ -10,12 +10,6 @@ export const MovementListTableComponent: React.FC<Props> = (props) => {
   const { movementList } = props;
   return (
     <>
-      <div className={classes.headerContainer}>
-        <h2 className={`${classes.bold} ${classes.header}`}>
-          Alias: Gastos mes
-        </h2>
-        <h2 className={`${classes.bold} ${classes.header}`}>IBAN</h2>
-      </div>
       <table className={classes.gridContainer}>
         <thead>
           <tr className={classes.headerTable}>

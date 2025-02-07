@@ -22,24 +22,35 @@ export const MovementListPage: React.FC = () => {
       getAccountList(id).then((data) =>
         setAccountList(mapAccountApiToAccountVM(data))
       );
-      getAccountList(id).then((data) => console.log(data));
     }
   }, [id]);
 
   return (
     <AppLayout>
       <div className={classes.root}>
-        <div className={classes.headerContainer}>
-          <h1>Saldos y últimos movimientos</h1>
-          <div>
-            <p>Saldo disponible</p>
-            <>
-              {accountList.map((item) => (
-                <p>{item.balance}</p>
-              ))}
-            </>
-          </div>
-        </div>
+        {accountList.map((item) => (
+          <>
+            <div className={classes.headerContainer}>
+              <h1>Saldos y últimos movimientos</h1>
+              <div>
+                <p className={`${classes.uppercase} ${classes.bold}`}>
+                  Saldo disponible
+                </p>
+                <p
+                  className={`${classes.balance} ${classes.alignRight}`}
+                >{`${item.balance} €`}</p>
+              </div>
+            </div>
+            <div className={classes.headerContainer}>
+              <h2 className={`${classes.bold} ${classes.header}`}>
+                Alias: {item.alias}
+              </h2>
+              <h2 className={`${classes.bold} ${classes.header}`}>
+                IBAN: {item.iban}
+              </h2>
+            </div>
+          </>
+        ))}
         <MovementListTableComponent movementList={movementList} />
       </div>
     </AppLayout>

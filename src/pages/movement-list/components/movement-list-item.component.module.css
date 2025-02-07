@@ -49,3 +49,6 @@
 tr > td {
   padding: 1rem;
 }
+.negative {
+  color: #e30000;
+}
