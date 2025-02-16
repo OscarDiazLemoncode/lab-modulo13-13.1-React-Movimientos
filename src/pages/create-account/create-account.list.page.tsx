@@ -1,5 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppLayout } from '@/layouts/index';
+import { saveAccount } from './api/create-account.api';
+import { Account } from './api/create-account.api-model';
+import { appRoutes } from '@/core/router/routes';
 import classes from './create-account.list.page.module.css';
 
 const SELECT_NONE = '0';
@@ -8,41 +12,44 @@ const SELECT_SAVING = '2';
 const SELECT_PAYROLL = '3';
 
 export const CreateAccountPage: React.FC = () => {
-  const [inputValue, setInputValue] = React.useState('');
+  const [selectValue, setSelectValue] = React.useState<string>(SELECT_NONE);
+  const [inputValue, setInputValue] = React.useState<string>('');
+  const navigate = useNavigate();
+
+  const account: Account = {
+    type: selectValue,
+    name: inputValue,
+  };
 
   const handleSelectChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const input = document.querySelector('#input_alias');
     const optionDisabled = document.querySelector('.disabled');
+    const input = document.querySelector('#input_alias');
     if (
-      e.target.value !== null &&
-      e.target.value !== undefined &&
-      e.target.value !== SELECT_NONE &&
+      optionDisabled !== null &&
+      optionDisabled !== undefined &&
+      optionDisabled instanceof HTMLOptionElement &&
       input !== null &&
       input !== undefined &&
       input instanceof HTMLInputElement
     ) {
       input.removeAttribute('disabled');
-      optionDisabled?.setAttribute('disabled', 'disabled');
-
-      console.log(input);
-      console.log(`value ${e.target.value}`);
+      optionDisabled.setAttribute('disabled', 'disabled');
+      setSelectValue(e.target.value);
     } else {
-      console.log('value undefined');
+      throw new Error('undefined value');
     }
   };
 
-  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setInputValue(e.target.value);
-  };
-
-  const submitCreateAccount = () => {
-    console.log('clicked');
+  const handleSubmitAccount = () => {
+    saveAccount(account);
+    setTimeout(() => {
+      navigate(appRoutes.createAccount);
+    }, 500);
   };
 
   return (
     <AppLayout>
-      <div className={classes.root}>
+      <div className={`${classes.root} create_account_container`}>
         <div className={classes.headerContainer}>
           <h1>Cuenta Bancaria</h1>
         </div>
@@ -54,7 +61,7 @@ export const CreateAccountPage: React.FC = () => {
               id="select_account"
               className={classes.select}
             >
-              <option className="disabled" value={SELECT_NONE}>
+              <option className="disabled" value={selectValue}>
                 Seleccionar
               </option>
               <option value={SELECT_CURRENT} id={SELECT_CURRENT}>
@@ -72,7 +79,7 @@ export const CreateAccountPage: React.FC = () => {
             <label htmlFor="input_alias">Alias: </label>
             <input
               disabled
-              onChange={handleInputValue}
+              onChange={(e) => setInputValue(e.target.value)}
               type="text"
               id="input_alias"
               placeholder="Nombre de la cuenta"
@@ -82,7 +89,7 @@ export const CreateAccountPage: React.FC = () => {
         </div>
         <hr />
         <button
-          onClick={submitCreateAccount}
+          onClick={handleSubmitAccount}
           className={`${classes.button} ${classes.mAuto}`}
         >
           Guardar

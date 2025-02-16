@@ -29,7 +29,7 @@
   padding: 24px 0;
   align-items: end;
 }
-input[type='text'] {
+.create_account_container input[type='text'] {
   margin: 0 0 0 16px;
 }
 .m_auto {
