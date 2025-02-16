@@ -79,6 +79,38 @@
       "balance": 0,
       "lastTransaction": "2025-02-16T13:21:02.180Z",
       "id": "qFSEcdy"
+    },
+    {
+      "iban": "IL08 3045 1703 2038 3061 393",
+      "name": "Laboral",
+      "type": "1",
+      "balance": 0,
+      "lastTransaction": "2025-02-16T17:41:22.049Z",
+      "id": "XgAFWUQ"
+    },
+    {
+      "iban": "MR74 6002 0070 0600 4050 3072 008",
+      "name": "Laboral-2",
+      "type": "1",
+      "balance": 0,
+      "lastTransaction": "2025-02-16T17:44:19.262Z",
+      "id": "wRBX-Hq"
+    },
+    {
+      "iban": "PS13 81L8 2070 4588 7530 1371 0012 9",
+      "name": "",
+      "type": "0",
+      "balance": 0,
+      "lastTransaction": "2025-02-16T18:29:25.139Z",
+      "id": "JxdgY6K"
+    },
+    {
+      "iban": "ES34 0809 0086 0704 1300 1842",
+      "name": "Corriente",
+      "type": "1",
+      "balance": 0,
+      "lastTransaction": "2025-02-16T19:27:29.270Z",
+      "id": "MiYNFhn"
     }
   ],
   "movements": [

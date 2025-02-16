@@ -4,6 +4,7 @@ import { AppLayout } from '@/layouts/index';
 import { saveAccount } from './api/create-account.api';
 import { Account } from './api/create-account.api-model';
 import { appRoutes } from '@/core/router/routes';
+import { ButtonCreateAccount } from './components/create-account-button';
 import classes from './create-account.list.page.module.css';
 
 const SELECT_NONE = '0';
@@ -14,6 +15,7 @@ const SELECT_PAYROLL = '3';
 export const CreateAccountPage: React.FC = () => {
   const [selectValue, setSelectValue] = React.useState<string>(SELECT_NONE);
   const [inputValue, setInputValue] = React.useState<string>('');
+  const [isButtonDisabled, setIsButtonDisabled] = React.useState<boolean>(true);
   const navigate = useNavigate();
 
   const account: Account = {
@@ -24,6 +26,7 @@ export const CreateAccountPage: React.FC = () => {
   const handleSelectChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const optionDisabled = document.querySelector('.disabled');
     const input = document.querySelector('#input_alias');
+
     if (
       optionDisabled !== null &&
       optionDisabled !== undefined &&
@@ -40,10 +43,15 @@ export const CreateAccountPage: React.FC = () => {
     }
   };
 
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    setIsButtonDisabled(false);
+  };
+
   const handleSubmitAccount = () => {
     saveAccount(account);
     setTimeout(() => {
-      navigate(appRoutes.createAccount);
+      navigate(appRoutes.accountList);
     }, 500);
   };
 
@@ -79,7 +87,7 @@ export const CreateAccountPage: React.FC = () => {
             <label htmlFor="input_alias">Alias: </label>
             <input
               disabled
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={handleInput}
               type="text"
               id="input_alias"
               placeholder="Nombre de la cuenta"
@@ -88,12 +96,16 @@ export const CreateAccountPage: React.FC = () => {
           </div>
         </div>
         <hr />
-        <button
+        <ButtonCreateAccount
+          isDisabled={isButtonDisabled}
+          onClickProp={handleSubmitAccount}
+        />
+        {/* <button
           onClick={handleSubmitAccount}
           className={`${classes.button} ${classes.mAuto}`}
         >
           Guardar
-        </button>
+        </button> */}
       </div>
     </AppLayout>
   );
