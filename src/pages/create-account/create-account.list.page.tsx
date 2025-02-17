@@ -5,6 +5,9 @@ import { saveAccount } from './api/create-account.api';
 import { Account } from './api/create-account.api-model';
 import { appRoutes } from '@/core/router/routes';
 import { ButtonCreateAccount } from './components/create-account-button';
+import { InputAliasAccount } from './components/create-account-input-alias';
+import { SelectTypeAccount } from './components/create-account-select-type';
+import { OptionTypeAccount } from './components/create-accont-option-type';
 import classes from './create-account.list.page.module.css';
 
 const SELECT_NONE = '0';
@@ -16,6 +19,7 @@ export const CreateAccountPage: React.FC = () => {
   const [selectValue, setSelectValue] = React.useState<string>(SELECT_NONE);
   const [inputValue, setInputValue] = React.useState<string>('');
   const [isButtonDisabled, setIsButtonDisabled] = React.useState<boolean>(true);
+  const [isInputDisabled, setIsInputDisabled] = React.useState<boolean>(true);
   const navigate = useNavigate();
 
   const account: Account = {
@@ -35,7 +39,7 @@ export const CreateAccountPage: React.FC = () => {
       input !== undefined &&
       input instanceof HTMLInputElement
     ) {
-      input.removeAttribute('disabled');
+      setIsInputDisabled(false);
       optionDisabled.setAttribute('disabled', 'disabled');
       setSelectValue(e.target.value);
     } else {
@@ -45,7 +49,9 @@ export const CreateAccountPage: React.FC = () => {
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-    setIsButtonDisabled(false);
+    e.target.value.length > 0
+      ? setIsButtonDisabled(false)
+      : setIsButtonDisabled(true);
   };
 
   const handleSubmitAccount = () => {
@@ -62,50 +68,44 @@ export const CreateAccountPage: React.FC = () => {
           <h1>Cuenta Bancaria</h1>
         </div>
         <div className={classes.content}>
-          <div>
-            <label htmlFor="select_account">Tipo de cuenta:</label>
-            <select
-              onChange={handleSelectChanged}
-              id="select_account"
-              className={classes.select}
-            >
-              <option className="disabled" value={selectValue}>
-                Seleccionar
-              </option>
-              <option value={SELECT_CURRENT} id={SELECT_CURRENT}>
-                Cuenta Corriente
-              </option>
-              <option value={SELECT_SAVING} id={SELECT_SAVING}>
-                Cuenta de Ahorro
-              </option>
-              <option value={SELECT_PAYROLL} id={SELECT_PAYROLL}>
-                Cuenta de Nómina
-              </option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="input_alias">Alias: </label>
-            <input
-              disabled
-              onChange={handleInput}
-              type="text"
-              id="input_alias"
-              placeholder="Nombre de la cuenta"
-              value={inputValue}
-            />
-          </div>
+          <SelectTypeAccount onChangeProp={handleSelectChanged}>
+            <OptionTypeAccount className="disabled" value={selectValue}>
+              Seleccionar
+            </OptionTypeAccount>
+            <OptionTypeAccount value={SELECT_CURRENT} id={SELECT_CURRENT}>
+              Cuenta Corriente
+            </OptionTypeAccount>
+            <OptionTypeAccount value={SELECT_SAVING} id={SELECT_SAVING}>
+              Cuenta de Ahorro
+            </OptionTypeAccount>
+            <OptionTypeAccount value={SELECT_PAYROLL} id={SELECT_PAYROLL}>
+              Cuenta de Nómina
+            </OptionTypeAccount>
+
+            {/* <option className="disabled" value={selectValue}>
+              Seleccionar
+            </option>
+            <option value={SELECT_CURRENT} id={SELECT_CURRENT}>
+              Cuenta Corriente
+            </option>
+            <option value={SELECT_SAVING} id={SELECT_SAVING}>
+              Cuenta de Ahorro
+            </option>
+            <option value={SELECT_PAYROLL} id={SELECT_PAYROLL}>
+              Cuenta de Nómina
+            </option> */}
+          </SelectTypeAccount>
+          <InputAliasAccount
+            onChangeProp={handleInput}
+            isDisabled={isInputDisabled}
+            value={inputValue}
+          />
         </div>
         <hr />
         <ButtonCreateAccount
           isDisabled={isButtonDisabled}
           onClickProp={handleSubmitAccount}
         />
-        {/* <button
-          onClick={handleSubmitAccount}
-          className={`${classes.button} ${classes.mAuto}`}
-        >
-          Guardar
-        </button> */}
       </div>
     </AppLayout>
   );

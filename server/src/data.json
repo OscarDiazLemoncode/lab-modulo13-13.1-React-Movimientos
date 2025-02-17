@@ -25,92 +25,12 @@
       "lastTransaction": "2019-11-15T08:29:04"
     },
     {
-      "iban": "XK50 6095 5047 2848 0112",
-      "name": "test",
+      "iban": "MC26 0206 0300 177A 950H QU26 355",
+      "name": "Remunerada",
       "type": "1",
       "balance": 0,
-      "lastTransaction": "2025-02-16T10:42:55.865Z",
-      "id": "XWdjTEE"
-    },
-    {
-      "iban": "AT08 0103 5016 1046 9030",
-      "name": "",
-      "type": "0",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T12:42:31.884Z",
-      "id": "BP-vgUM"
-    },
-    {
-      "iban": "AT42 5025 2005 4890 7406",
-      "name": "",
-      "type": "0",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T12:42:52.799Z",
-      "id": "acZc1NK"
-    },
-    {
-      "iban": "PT70 6672 4003 7130 0539 0215 6",
-      "name": "remunerada",
-      "type": "3",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T12:45:28.297Z",
-      "id": "UzCeyb2"
-    },
-    {
-      "iban": "AL85 0560 8565 B59O LQ57 5739 3807",
-      "name": "Ahorro conjunta",
-      "type": "2",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T13:06:12.009Z",
-      "id": "4ugs4Po"
-    },
-    {
-      "iban": "AD76 0601 6637 P933 0961 3SQ0",
-      "name": "Jubilación",
-      "type": "1",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T13:19:56.012Z",
-      "id": "iaKSeqW"
-    },
-    {
-      "iban": "SA81 2218 7625 4ULD 1992 7158",
-      "name": "Ahorro conjunta",
-      "type": "2",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T13:21:02.180Z",
-      "id": "qFSEcdy"
-    },
-    {
-      "iban": "IL08 3045 1703 2038 3061 393",
-      "name": "Laboral",
-      "type": "1",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T17:41:22.049Z",
-      "id": "XgAFWUQ"
-    },
-    {
-      "iban": "MR74 6002 0070 0600 4050 3072 008",
-      "name": "Laboral-2",
-      "type": "1",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T17:44:19.262Z",
-      "id": "wRBX-Hq"
-    },
-    {
-      "iban": "PS13 81L8 2070 4588 7530 1371 0012 9",
-      "name": "",
-      "type": "0",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T18:29:25.139Z",
-      "id": "JxdgY6K"
-    },
-    {
-      "iban": "ES34 0809 0086 0704 1300 1842",
-      "name": "Corriente",
-      "type": "1",
-      "balance": 0,
-      "lastTransaction": "2025-02-16T19:27:29.270Z",
-      "id": "MiYNFhn"
+      "lastTransaction": "2025-02-17T19:17:30.553Z",
+      "id": "WJetT9j"
     }
   ],
   "movements": [

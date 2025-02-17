@@ -1,14 +1,12 @@
 import React from 'react';
 import classes from './create-account-button.module.css';
 
-interface ButtonCreateAccountProp {
+interface Props {
   onClickProp: () => void;
   isDisabled: boolean;
 }
 
-export const ButtonCreateAccount: React.FC<ButtonCreateAccountProp> = (
-  props
-) => {
+export const ButtonCreateAccount: React.FC<Props> = (props) => {
   const { onClickProp, isDisabled } = props;
   return (
     <button
