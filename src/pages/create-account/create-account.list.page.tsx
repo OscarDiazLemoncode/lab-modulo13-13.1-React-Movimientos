@@ -81,19 +81,6 @@ export const CreateAccountPage: React.FC = () => {
             <OptionTypeAccount value={SELECT_PAYROLL} id={SELECT_PAYROLL}>
               Cuenta de Nómina
             </OptionTypeAccount>
-
-            {/* <option className="disabled" value={selectValue}>
-              Seleccionar
-            </option>
-            <option value={SELECT_CURRENT} id={SELECT_CURRENT}>
-              Cuenta Corriente
-            </option>
-            <option value={SELECT_SAVING} id={SELECT_SAVING}>
-              Cuenta de Ahorro
-            </option>
-            <option value={SELECT_PAYROLL} id={SELECT_PAYROLL}>
-              Cuenta de Nómina
-            </option> */}
           </SelectTypeAccount>
           <InputAliasAccount
             onChangeProp={handleInput}
