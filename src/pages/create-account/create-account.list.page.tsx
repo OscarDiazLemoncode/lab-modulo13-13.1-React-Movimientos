@@ -15,11 +15,12 @@ const SELECT_CURRENT = '1';
 const SELECT_SAVING = '2';
 const SELECT_PAYROLL = '3';
 
-export const CreateAccountPage: React.FC = () => {
+export const CreateAccountForm: React.FC = () => {
   const [selectValue, setSelectValue] = React.useState<string>(SELECT_NONE);
   const [inputValue, setInputValue] = React.useState<string>('');
   const [isButtonDisabled, setIsButtonDisabled] = React.useState<boolean>(true);
   const [isInputDisabled, setIsInputDisabled] = React.useState<boolean>(true);
+  const [isOptionDisabled, setOptionDisabled] = React.useState<boolean>(false);
   const navigate = useNavigate();
 
   const account: Account = {
@@ -28,23 +29,9 @@ export const CreateAccountPage: React.FC = () => {
   };
 
   const handleSelectChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const optionDisabled = document.querySelector('.disabled');
-    const input = document.querySelector('#input_alias');
-
-    if (
-      optionDisabled !== null &&
-      optionDisabled !== undefined &&
-      optionDisabled instanceof HTMLOptionElement &&
-      input !== null &&
-      input !== undefined &&
-      input instanceof HTMLInputElement
-    ) {
-      setIsInputDisabled(false);
-      optionDisabled.setAttribute('disabled', 'disabled');
-      setSelectValue(e.target.value);
-    } else {
-      throw new Error('undefined value');
-    }
+    setIsInputDisabled(false);
+    setOptionDisabled(true);
+    setSelectValue(e.target.value);
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +56,10 @@ export const CreateAccountPage: React.FC = () => {
         </div>
         <div className={classes.content}>
           <SelectTypeAccount onChangeProp={handleSelectChanged}>
-            <OptionTypeAccount className="disabled" value={selectValue}>
+            <OptionTypeAccount
+              isOptionDisabled={isOptionDisabled}
+              value={SELECT_NONE}
+            >
               Seleccionar
             </OptionTypeAccount>
             <OptionTypeAccount value={SELECT_CURRENT} id={SELECT_CURRENT}>
@@ -83,6 +73,11 @@ export const CreateAccountPage: React.FC = () => {
             </OptionTypeAccount>
           </SelectTypeAccount>
           <InputAliasAccount
+            className={
+              selectValue !== '0' && inputValue === ''
+                ? classes.enable
+                : undefined
+            }
             onChangeProp={handleInput}
             isDisabled={isInputDisabled}
             value={inputValue}

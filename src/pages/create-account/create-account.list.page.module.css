@@ -26,3 +26,6 @@
 .create_account_container input[type='text'] {
   margin: 0 0 0 16px;
 }
+.enable {
+  outline: 2px solid #15b51596;
+}

@@ -1,16 +1,16 @@
 import React from 'react';
 
 export interface Props {
-  className?: string;
   value: string;
   id?: string;
   children: React.ReactNode;
+  isOptionDisabled?: boolean;
 }
 
 export const OptionTypeAccount: React.FC<Props> = (props) => {
-  const { className, value, id, children } = props;
+  const { value, id, children, isOptionDisabled } = props;
   return (
-    <option className={className} value={value} id={id}>
+    <option value={value} id={id} disabled={isOptionDisabled}>
       {children}
     </option>
   );
